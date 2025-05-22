@@ -3,31 +3,1213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SecurTalent - Agence de Recrutement en Sécurité</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>SecuFound - Agence de Recrutement en Sécurité</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Variables CSS modernes */
+        :root {
+            /* Couleurs principales */
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #f59e0b;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --danger: #ef4444;
+            
+            /* Couleurs neutres */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Couleurs de fond - Mode Clair */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-dark: #0f172a;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --nav-text: #374151;
+            
+            /* Mode Sombre */
+            --dark-bg-primary: #0f172a;
+            --dark-bg-secondary: #1e293b;
+            --dark-bg-dark: #000000;
+            --dark-text-primary: #f1f5f9;
+            --dark-text-secondary: #94a3b8;
+            --dark-border-color: #334155;
+            --dark-card-bg: #1e293b;
+            --dark-header-bg: rgba(15, 23, 42, 0.95);
+            --dark-nav-text: #e2e8f0;
+            
+            /* Typographie */
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+            
+            /* Espacement */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            
+            /* Autres */
+            --border-radius: 0.75rem;
+            --border-radius-lg: 1rem;
+            --border-radius-xl: 1.5rem;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset moderne */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Mode Sombre */
+        [data-theme="dark"] {
+            --bg-primary: var(--dark-bg-primary);
+            --bg-secondary: var(--dark-bg-secondary);
+            --text-primary: var(--dark-text-primary);
+            --text-secondary: var(--dark-text-secondary);
+            --border-color: var(--dark-border-color);
+            --card-bg: var(--dark-card-bg);
+            --header-bg: var(--dark-header-bg);
+            --nav-text: var(--dark-nav-text);
+        }
+
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #000000 0%, var(--primary-dark) 100%);
+        }
+
+        [data-theme="dark"] .stats {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+
+        /* Header moderne */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--header-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: var(--header-bg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: var(--text-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .theme-toggle i {
+            font-size: var(--font-size-lg);
+            transition: var(--transition);
+        }
+
+        .theme-toggle .fa-sun {
+            position: absolute;
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+
+        .theme-toggle .fa-moon {
+            position: absolute;
+            opacity: 0;
+            transform: rotate(180deg);
+        }
+
+        [data-theme="dark"] .theme-toggle .fa-sun {
+            opacity: 0;
+            transform: rotate(180deg);
+        }
+
+        [data-theme="dark"] .theme-toggle .fa-moon {
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            font-size: var(--font-size-xl);
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: var(--font-size-2xl);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--space-8);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--nav-text);
+            font-weight: 500;
+            font-size: var(--font-size-sm);
+            letter-spacing: 0.025em;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        /* Menu mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: var(--space-1);
+            padding: var(--space-2);
+        }
+
+        .bar {
+            width: 24px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-4px, 5px);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-4px, -5px);
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero moderne */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--secondary);
+            padding: var(--space-2) var(--space-4);
+            border-radius: 50px;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            margin-bottom: var(--space-6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero h1 {
+            font-size: var(--font-size-5xl);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--space-6);
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: var(--font-size-lg);
+            color: var(--gray-300);
+            margin-bottom: var(--space-8);
+            line-height: 1.7;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: var(--font-size-base);
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        /* Hero image/animation */
+        .hero-visual {
+            position: absolute;
+            right: -200px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.1;
+            font-size: 400px;
+            color: var(--accent);
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(-50%) rotate(0deg); }
+            50% { transform: translateY(-60%) rotate(5deg); }
+        }
+
+        /* Services modernes */
+        .services {
+            padding: var(--space-24) 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-16);
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: var(--space-2) var(--space-4);
+            border-radius: 50px;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-4);
+        }
+
+        .section-title {
+            font-size: var(--font-size-4xl);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: var(--space-4);
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-8);
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: var(--space-8);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--space-6);
+            box-shadow: var(--shadow-md);
+        }
+
+        .service-card h3 {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-3);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Stats section */
+        .stats {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-20) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='m0 40l40-40v40z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-8);
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: var(--space-6);
+        }
+
+        .stat-number {
+            font-size: var(--font-size-5xl);
+            font-weight: 800;
+            color: var(--secondary);
+            display: block;
+            margin-bottom: var(--space-2);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-lg);
+            color: var(--gray-200);
+            font-weight: 500;
+        }
+
+        /* Features section */
+        .features {
+            padding: var(--space-24) 0;
+            background: var(--bg-primary);
+        }
+
+        .features-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+            align-items: center;
+        }
+
+        .features-text {
+            order: 2;
+        }
+
+        .features-visual {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius-xl);
+            padding: var(--space-12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.1;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.1); opacity: 0.2; }
+        }
+
+        .features-visual i {
+            font-size: 8rem;
+            color: var(--primary);
+            opacity: 0.3;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: var(--space-6);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+            padding: var(--space-4);
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            background: var(--card-bg);
+            transform: translateX(4px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--font-size-sm);
+            flex-shrink: 0;
+            margin-top: var(--space-1);
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-text h4 {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+        }
+
+        .feature-text p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Page candidature moderne */
+        .candidature-section {
+            padding: var(--space-24) 0;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, white 100%);
+            min-height: calc(100vh - 80px);
+        }
+
+        .candidature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+            margin-top: var(--space-12);
+        }
+
+        .profile-cards {
+            display: grid;
+            gap: var(--space-4);
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .profile-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+        }
+
+        .profile-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--font-size-lg);
+        }
+
+        .profile-card h3 {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .profile-card p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .form-card {
+            background: var(--card-bg);
+            padding: var(--space-10);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-xl);
+            border: 2px solid var(--secondary);
+            position: sticky;
+            top: 100px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .form-header h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-3);
+        }
+
+        .form-benefits {
+            list-style: none;
+            margin: var(--space-6) 0;
+        }
+
+        .form-benefits li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .form-benefits i {
+            color: var(--success);
+            font-size: var(--font-size-base);
+        }
+
+        /* Contact moderne */
+        .contact-section {
+            padding: var(--space-24) 0;
+            background: var(--bg-secondary);
+            min-height: calc(100vh - 80px);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+            margin-top: var(--space-12);
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-6);
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .contact-card-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--font-size-xl);
+            margin: 0 auto var(--space-4);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-card h3 {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .contact-card p,
+        .contact-card a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--primary);
+        }
+
+        .map-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .map-placeholder i {
+            font-size: 4rem;
+            margin-bottom: var(--space-4);
+            color: var(--primary);
+            opacity: 0.5;
+        }
+
+        /* Footer moderne */
+        .footer {
+            background: var(--bg-dark);
+            color: var(--gray-300);
+            padding: var(--space-20) 0 var(--space-8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--space-12);
+            margin-bottom: var(--space-12);
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            font-size: var(--font-size-xl);
+            font-weight: 800;
+            color: white;
+            margin-bottom: var(--space-4);
+        }
+
+        .footer-brand i {
+            font-size: var(--font-size-2xl);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+            font-size: var(--font-size-lg);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: var(--space-2);
+        }
+
+        .footer-section a {
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: var(--font-size-sm);
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-700);
+            padding-top: var(--space-8);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-bottom p {
+            color: var(--gray-500);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .hero-visual {
+                right: -300px;
+                font-size: 300px;
+            }
+            
+            .features-content {
+                grid-template-columns: 1fr;
+                gap: var(--space-12);
+            }
+            
+            .features-text {
+                order: 1;
+            }
+            
+            .candidature-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-12);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-8);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--header-bg);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: var(--space-12);
+                transition: var(--transition);
+                box-shadow: var(--shadow-xl);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: var(--space-4) 0;
+            }
+            
+            .nav-link {
+                font-size: var(--font-size-lg);
+                padding: var(--space-4) var(--space-6);
+            }
+            
+            .hero {
+                text-align: center;
+                padding: var(--space-16) 0;
+            }
+            
+            .hero h1 {
+                font-size: var(--font-size-4xl);
+            }
+            
+            .hero-visual {
+                display: none;
+            }
+            
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title {
+                font-size: var(--font-size-3xl);
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-6);
+            }
+            
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-card {
+                position: static;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: var(--space-8);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 var(--space-3);
+            }
+            
+            .nav-container {
+                padding: 0 var(--space-3);
+            }
+            
+            .hero {
+                padding: var(--space-12) 0;
+            }
+            
+            .hero h1 {
+                font-size: var(--font-size-3xl);
+            }
+            
+            .btn {
+                padding: var(--space-3) var(--space-5);
+                font-size: var(--font-size-sm);
+            }
+            
+            .service-card,
+            .contact-card,
+            .profile-card {
+                padding: var(--space-5);
+            }
+            
+            .form-card {
+                padding: var(--space-6);
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: var(--font-size-4xl);
+            }
+        }
+
+        /* Dark mode support - Suppression de l'ancien */
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* High contrast */
+        @media (prefers-contrast: high) {
+            .service-card,
+            .contact-card,
+            .profile-card {
+                border: 2px solid var(--gray-300);
+            }
+            
+            .btn {
+                border: 2px solid currentColor;
+            }
+        }
+
+        /* Focus styles */
+        .nav-link:focus-visible,
+        .btn:focus-visible {
+            outline: 2px solid var(--secondary);
+            outline-offset: 2px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header avec navigation -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>SecurTalent</span>
-                </div>
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="#accueil" class="nav-link active">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#candidature" class="nav-link">Candidature</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link">Contact</a>
-                    </li>
-                </ul>
-                <div class="hamburger">
+    <!-- Header moderne -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="#accueil" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>SecuFound</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                <li><a href="#candidature" class="nav-link">Candidature</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Basculer le thème">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -40,15 +1222,27 @@
     <main id="accueil" class="page active">
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">Votre Partenaire en Recrutement Sécurité</h1>
-                <p class="hero-subtitle">Nous connectons les meilleurs talents avec les entreprises qui recherchent des agents de sécurité qualifiés et expérimentés.</p>
-                <a href="#candidature" class="cta-button">
-                    <i class="fas fa-user-plus"></i>
-                    Postuler Maintenant
-                </a>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-award"></i>
+                        <span>Agence certifiée • +5 ans d'expérience</span>
+                    </div>
+                    <h1>Votre Partenaire en Recrutement Sécurité</h1>
+                    <p>Nous connectons les meilleurs talents avec les entreprises qui recherchent des agents de sécurité qualifiés et expérimentés. Une approche moderne du recrutement spécialisé.</p>
+                    <div class="cta-group">
+                        <a href="#candidature" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            Postuler Maintenant
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-phone"></i>
+                            Nous Contacter
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="hero-image">
+            <div class="hero-visual">
                 <i class="fas fa-users-cog"></i>
             </div>
         </section>
@@ -56,60 +1250,124 @@
         <!-- Services Section -->
         <section class="services">
             <div class="container">
-                <h2 class="section-title">Nos Services</h2>
+                <div class="section-header">
+                    <span class="section-badge">NOS SERVICES</span>
+                    <h2 class="section-title">Solutions Complètes de Recrutement</h2>
+                    <p class="section-subtitle">
+                        Nous proposons une gamme complète de services pour répondre à tous vos besoins en matière de recrutement dans le secteur de la sécurité.
+                    </p>
+                </div>
+                
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card animate-on-scroll">
                         <div class="service-icon">
                             <i class="fas fa-search"></i>
                         </div>
                         <h3>Recherche de Talents</h3>
-                        <p>Identification et sélection des meilleurs profils d'agents de sécurité selon vos critères spécifiques.</p>
+                        <p>Identification et sélection des meilleurs profils d'agents de sécurité selon vos critères spécifiques grâce à notre réseau étendu et nos outils de sourcing avancés.</p>
                     </div>
-                    <div class="service-card">
+                    
+                    <div class="service-card animate-on-scroll">
                         <div class="service-icon">
                             <i class="fas fa-clipboard-check"></i>
                         </div>
                         <h3>Évaluation Complète</h3>
-                        <p>Processus rigoureux d'évaluation des compétences, expériences et certifications des candidats.</p>
+                        <p>Processus rigoureux d'évaluation des compétences, expériences et certifications des candidats incluant tests techniques et vérifications approfondies.</p>
                     </div>
-                    <div class="service-card">
+                    
+                    <div class="service-card animate-on-scroll">
                         <div class="service-icon">
                             <i class="fas fa-handshake"></i>
                         </div>
-                        <h3>Accompagnement</h3>
-                        <p>Suivi personnalisé des candidats et des entreprises tout au long du processus de recrutement.</p>
+                        <h3>Accompagnement Personnalisé</h3>
+                        <p>Suivi individualisé des candidats et des entreprises tout au long du processus de recrutement avec un conseiller dédié pour garantir le meilleur match.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- À propos Section -->
-        <section class="about">
+        <!-- Stats Section -->
+        <section class="stats">
             <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2>Pourquoi Choisir SecurTalent ?</h2>
-                        <p>Forte de plusieurs années d'expérience dans le secteur de la sécurité, notre agence comprend les enjeux spécifiques de ce domaine d'activité.</p>
-                        <ul class="about-features">
-                            <li><i class="fas fa-check"></i> Expertise reconnue dans le domaine de la sécurité</li>
-                            <li><i class="fas fa-check"></i> Réseau étendu de professionnels qualifiés</li>
-                            <li><i class="fas fa-check"></i> Processus de sélection rigoureux</li>
-                            <li><i class="fas fa-check"></i> Accompagnement personnalisé</li>
-                        </ul>
+                <div class="stats-grid">
+                    <div class="stat-card animate-on-scroll">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Candidats placés avec succès</span>
                     </div>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Candidats placés</div>
+                    <div class="stat-card animate-on-scroll">
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label">Entreprises partenaires</span>
+                    </div>
+                    <div class="stat-card animate-on-scroll">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Taux de satisfaction client</span>
+                    </div>
+                    <div class="stat-card animate-on-scroll">
+                        <span class="stat-number">24h</span>
+                        <span class="stat-label">Délai moyen de réponse</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="features-content">
+                    <div class="features-visual">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    
+                    <div class="features-text">
+                        <div class="section-header" style="text-align: left; margin-bottom: var(--space-8);">
+                            <span class="section-badge">POURQUOI NOUS CHOISIR</span>
+                            <h2 class="section-title">Excellence et Expertise Reconnues</h2>
+                            <p class="section-subtitle" style="margin: 0;">
+                                Forte de plusieurs années d'expérience dans le secteur de la sécurité, notre agence comprend parfaitement les enjeux et exigences de ce domaine d'activité.
+                            </p>
                         </div>
-                        <div class="stat">
-                            <div class="stat-number">100+</div>
-                            <div class="stat-label">Entreprises partenaires</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">95%</div>
-                            <div class="stat-label">Taux de satisfaction</div>
-                        </div>
+                        
+                        <ul class="feature-list">
+                            <li class="feature-item animate-on-scroll">
+                                <div class="feature-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Expertise Sectorielle</h4>
+                                    <p>Connaissance approfondie du marché de la sécurité et de ses spécificités</p>
+                                </div>
+                            </li>
+                            
+                            <li class="feature-item animate-on-scroll">
+                                <div class="feature-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Réseau Qualifié</h4>
+                                    <p>Base de données étendue de professionnels certifiés et expérimentés</p>
+                                </div>
+                            </li>
+                            
+                            <li class="feature-item animate-on-scroll">
+                                <div class="feature-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Processus Rigoureux</h4>
+                                    <p>Méthodologie éprouvée de sélection et de validation des candidatures</p>
+                                </div>
+                            </li>
+                            
+                            <li class="feature-item animate-on-scroll">
+                                <div class="feature-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Suivi Personnalisé</h4>
+                                    <p>Accompagnement sur-mesure adapté à vos besoins spécifiques</p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -120,209 +1378,398 @@
     <main id="candidature" class="page">
         <section class="candidature-section">
             <div class="container">
-                <div class="candidature-header">
-                    <h2>Rejoignez Notre Réseau de Talents</h2>
-                    <p>Vous êtes un professionnel de la sécurité à la recherche de nouvelles opportunités ? Candidatez dès maintenant !</p>
+                <div class="section-header">
+                    <span class="section-badge">CANDIDATURE</span>
+                    <h2 class="section-title">Rejoignez Notre Réseau d'Excellence</h2>
+                    <p class="section-subtitle">
+                        Vous êtes un professionnel de la sécurité passionné et qualifié ? Intégrez notre réseau de talents et accédez aux meilleures opportunités du marché.
+                    </p>
                 </div>
                 
-                <div class="candidature-content">
-                    <div class="candidature-info">
-                        <h3>Profils Recherchés</h3>
-                        <ul class="profile-list">
-                            <li><i class="fas fa-shield-alt"></i> Agents de sécurité</li>
-                            <li><i class="fas fa-video"></i> Opérateurs de télésurveillance</li>
-                            <li><i class="fas fa-key"></i> Agents de sûreté</li>
-                            <li><i class="fas fa-building"></i> Chefs d'équipe sécurité</li>
-                            <li><i class="fas fa-car"></i> Agents de sécurité mobile</li>
-                            <li><i class="fas fa-dog"></i> Maîtres-chiens</li>
-                        </ul>
+                <div class="candidature-grid">
+                    <div class="profile-cards">
+                        <h3 style="font-size: var(--font-size-xl); font-weight: 700; color: var(--gray-900); margin-bottom: var(--space-6);">Profils Recherchés</h3>
                         
-                        <h3>Avantages</h3>
-                        <ul class="benefits-list">
-                            <li><i class="fas fa-briefcase"></i> Missions adaptées à votre profil</li>
-                            <li><i class="fas fa-calendar-alt"></i> Flexibilité des horaires</li>
-                            <li><i class="fas fa-graduation-cap"></i> Formations continues</li>
-                            <li><i class="fas fa-euro-sign"></i> Rémunération attractive</li>
-                        </ul>
+                        <div class="profile-card animate-on-scroll">
+                            <div class="profile-header">
+                                <div class="profile-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div>
+                                    <h3>Agents de Sécurité</h3>
+                                    <p>Surveillance, gardiennage, contrôle d'accès</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-card animate-on-scroll">
+                            <div class="profile-header">
+                                <div class="profile-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <div>
+                                    <h3>Opérateurs Télésurveillance</h3>
+                                    <p>Monitoring, systèmes d'alarme, vidéosurveillance</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-card animate-on-scroll">
+                            <div class="profile-header">
+                                <div class="profile-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div>
+                                    <h3>Chefs d'Équipe</h3>
+                                    <p>Management, coordination, formation d'équipes</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-card animate-on-scroll">
+                            <div class="profile-header">
+                                <div class="profile-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <div>
+                                    <h3>Agents Mobile</h3>
+                                    <p>Rondes, interventions, sécurité mobile</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-card animate-on-scroll">
+                            <div class="profile-header">
+                                <div class="profile-icon">
+                                    <i class="fas fa-dog"></i>
+                                </div>
+                                <div>
+                                    <h3>Maîtres-Chiens</h3>
+                                    <p>Cynophilie, détection, sécurité canine</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="form-container">
-                        <div class="form-card">
-                            <h3>Déposez votre candidature</h3>
-                            <p>Remplissez notre formulaire en ligne pour rejoindre notre base de talents.</p>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdbTdLLeBxtidyONLP8iaAmivXXI6NXE9ObnBvlg2U80SRVTw/viewform?usp=header" 
-                               target="_blank" 
-                               class="form-button">
-                                <i class="fas fa-external-link-alt"></i>
-                                Accéder au formulaire
-                            </a>
+                    <div class="form-card animate-on-scroll">
+                        <div class="form-header">
+                            <h3>Déposez Votre Candidature</h3>
+                            <p style="color: var(--gray-600);">Rejoignez notre base de talents et accédez aux meilleures opportunités du secteur.</p>
                         </div>
+                        
+                        <ul class="form-benefits">
+                            <li>
+                                <i class="fas fa-briefcase"></i>
+                                <span>Missions adaptées à votre profil et expérience</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Flexibilité des horaires et des plannings</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Formations continues et certifications</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-euro-sign"></i>
+                                <span>Rémunération attractive et évolutive</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-headset"></i>
+                                <span>Support et accompagnement personnalisé</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdbTdLLeBxtidyONLP8iaAmivXXI6NXE9ObnBvlg2U80SRVTw/viewform?usp=header" 
+                           target="_blank" 
+                           class="btn btn-primary" 
+                           style="width: 100%; justify-content: center;">
+                            <i class="fas fa-external-link-alt"></i>
+                            Accéder au Formulaire
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Page Contact -->
-    <main id="contact" class="page">
-        <section class="contact-section">
-            <div class="container">
-                <div class="contact-header">
-                    <h2>Contactez-Nous</h2>
-                    <p>Notre équipe est à votre disposition pour répondre à toutes vos questions.</p>
-                </div>
-                
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <h3>Adresse</h3>
-                            <p>123 Avenue de la Sécurité<br>
-                            75001 Paris, France</p>
-                        </div>
-                        
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <h3>Téléphone</h3>
-                            <p><a href="tel:+33123456789">01 23 45 67 89</a></p>
-                        </div>
-                        
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <h3>Email</h3>
-                            <p><a href="mailto:contact@securtalent.fr">contact@securtalent.fr</a></p>
-                        </div>
-                        
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <h3>Horaires</h3>
-                            <p>Lundi - Vendredi : 9h00 - 18h00<br>
-                            Samedi : 9h00 - 12h00</p>
-                        </div>
-                    </div>
-                    
-                    <div class="map-placeholder">
-                        <div class="map-content">
-                            <i class="fas fa-map"></i>
-                            <p>Plan d'accès</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
+
+    <!-- Footer moderne -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <div class="logo">
+                    <div class="footer-brand">
                         <i class="fas fa-shield-alt"></i>
                         <span>SecurTalent</span>
                     </div>
-                    <p>Votre partenaire de confiance pour le recrutement en sécurité.</p>
+                    <p style="max-width: 300px; line-height: 1.7;">
+                        Votre partenaire de confiance pour le recrutement spécialisé dans le secteur de la sécurité. Excellence, expertise et accompagnement personnalisé.
+                    </p>
                 </div>
+                
                 <div class="footer-section">
                     <h4>Navigation</h4>
                     <ul>
                         <li><a href="#accueil">Accueil</a></li>
                         <li><a href="#candidature">Candidature</a></li>
-                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <p><i class="fas fa-phone"></i> 01 23 45 67 89</p>
                     <p><i class="fas fa-envelope"></i> contact@securtalent.fr</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2025 SecurTalent. Tous droits réservés.</p>
+                <p>&copy; 2025 SecurTalent. Tous droits réservés. Conçu avec passion.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Navigation mobile
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
+        // Gestion du thème
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        
+        // Vérifier le thème sauvegardé ou utiliser la préférence système
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        // Définir le thème initial
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+        } else if (systemPrefersDark) {
+            htmlElement.setAttribute('data-theme', 'dark');
+        }
+        
+        // Fonction pour basculer le thème
+        function toggleTheme() {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Animation de rotation du bouton
+            themeToggle.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                themeToggle.style.transform = 'rotate(0deg)';
+            }, 300);
+        }
+        
+        // Événement pour le bouton de thème
+        themeToggle.addEventListener('click', toggleTheme);
+        
+        // Écouter les changements de préférence système
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                htmlElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+            }
+        });
+
+        // Navigation mobile améliorée
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const header = document.getElementById('header');
 
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
 
-        // Navigation entre les pages
+        // Navigation entre pages avec smooth scrolling
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page');
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                
-                // Masquer toutes les pages
-                pages.forEach(page => page.classList.remove('active'));
-                
-                // Afficher la page cible
-                document.getElementById(targetId).classList.add('active');
-                
-                // Mettre à jour la navigation active
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                
-                // Fermer le menu mobile
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                
-                // Scroll vers le haut
-                window.scrollTo(0, 0);
-            });
-        });
-
-        // Liens footer
         const footerLinks = document.querySelectorAll('.footer-section a[href^="#"]');
-        footerLinks.forEach(link => {
+
+        function navigateToPage(targetId) {
+            // Masquer toutes les pages
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Afficher la page cible
+            const targetPage = document.getElementById(targetId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Mettre à jour la navigation active
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`[href="#${targetId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Fermer le menu mobile
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Scroll vers le haut
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Événements pour les liens de navigation
+        [...navLinks, ...footerLinks].forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetId = link.getAttribute('href').substring(1);
-                
-                pages.forEach(page => page.classList.remove('active'));
-                document.getElementById(targetId).classList.add('active');
-                
-                navLinks.forEach(l => l.classList.remove('active'));
-                document.querySelector(`[href="#${targetId}"]`).classList.add('active');
-                
-                window.scrollTo(0, 0);
+                navigateToPage(targetId);
             });
         });
 
-        // Animation au scroll
+        // Effet de scroll sur le header
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animation au scroll améliorée
         const observerOptions = {
-            threshold: 0.1,
+            threshold: 0.15,
             rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, index * 100);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-card, .stat, .contact-card').forEach(el => {
+        // Observer tous les éléments à animer
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
+
+        // Animation des compteurs
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent);
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += step;
+                        if (counter.textContent.includes('%')) {
+                            counter.textContent = Math.min(Math.ceil(current), target) + '%';
+                        } else if (counter.textContent.includes('+')) {
+                            counter.textContent = Math.min(Math.ceil(current), target) + '+';
+                        } else if (counter.textContent.includes('h')) {
+                            counter.textContent = Math.min(Math.ceil(current), target) + 'h';
+                        } else {
+                            counter.textContent = Math.min(Math.ceil(current), target);
+                        }
+                        requestAnimationFrame(updateCounter);
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Observer pour les stats
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Fermer le menu mobile en cliquant à l'extérieur
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target) && !themeToggle.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Gestion du redimensionnement de la fenêtre
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Préchargement des animations
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+
+        // Raccourci clavier pour basculer le thème (Ctrl/Cmd + D)
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
+                e.preventDefault();
+                toggleTheme();
+            }
+        });
+
+        // Animation d'entrée pour le logo
+        window.addEventListener('load', () => {
+            const logo = document.querySelector('.logo');
+            logo.style.animation = 'fadeInUp 0.8s ease forwards';
+        });
+
+        // Effet de particules pour le hero (optionnel)
+        function createParticle() {
+            const hero = document.querySelector('.hero');
+            if (!hero) return;
+            
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = '4px';
+            particle.style.height = '4px';
+            particle.style.background = 'rgba(255, 255, 255, 0.3)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = '100%';
+            particle.style.zIndex = '1';
+            
+            hero.appendChild(particle);
+            
+            const animation = particle.animate([
+                { transform: 'translateY(0px)', opacity: 1 },
+                { transform: 'translateY(-100vh)', opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'linear'
+            });
+            
+            animation.onfinish = () => {
+                particle.remove();
+            };
+        }
+
+        // Créer des particules périodiquement (seulement si l'utilisateur préfère les animations)
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            setInterval(createParticle, 500);
+        }
     </script>
 </body>
 </html>
